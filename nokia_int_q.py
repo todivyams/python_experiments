@@ -25,14 +25,14 @@ class TestCheckBraces(unittest.TestCase):
         self.assertEqual(check_brackets("({[]})"),True)
 
     def test_2(self):
-        self.assertEqual(check_brackets("(){}[]"),True)
+        self.assertTrue(check_brackets("(){}[]"))
 
     def test_3(self):
         self.assertEqual(check_brackets("(){[]({}[])}[]"),True)
 
     def test_4(self):
-        self.assertEqual(check_brackets("(){[]({[])}[]"),False)
+        self.assertFalse(check_brackets("(){[]({[])}[]"))
 
 
 if __name__ == '__main__':
-    unittest.main()
+    unittest.main(verbosity=3)
