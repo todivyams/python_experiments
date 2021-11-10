@@ -2,18 +2,16 @@ import unittest
 
 def check_brackets(string):
     dict_brackets = {"{":"}","(":")","[":"]"}
-    key_list = list(dict_brackets.keys())
-    val_list = list(dict_brackets.values())
     temp_stack = []
-    matched = True
+    
     for i in string:
         
-        if i in key_list:
-            #print("append: ",i)
+        if i in dict_brackets:
             temp_stack.append(i)
-        elif i in val_list:
-            #print("pop")
-            if temp_stack.pop() != key_list[val_list.index(i)]:
+        elif i in dict_brackets.values():
+            if len(temp_stack) == 0:
+                return False
+            if dict_brackets[temp_stack.pop()] !=  i:
                 return False
     if len(temp_stack) == 0:
         return True
@@ -25,7 +23,7 @@ class TestCheckBraces(unittest.TestCase):
         self.assertEqual(check_brackets("({[]})"),True)
 
     def test_2(self):
-        self.assertTrue(check_brackets("(){}[]"))
+        self.assertFalse(check_brackets("()}{}[]"))
 
     def test_3(self):
         self.assertEqual(check_brackets("(){[]({}[])}[]"),True)
