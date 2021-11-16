@@ -3,7 +3,8 @@ import unittest
 def check_brackets(string):
     dict_brackets = {"{":"}","(":")","[":"]"}
     temp_stack = []
-    
+
+    print("check matching brackets")
     for i in string:
         
         if i in dict_brackets:
